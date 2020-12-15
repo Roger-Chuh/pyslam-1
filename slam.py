@@ -291,7 +291,7 @@ class Tracking(object):
                 self.num_matched_kps = len(idxs_cur)    
                 Printer.orange("# matched map points in prev frame (wider search): %d " % self.num_matched_kps)    
                                                 
-            if kDebugDrawMatches and True: 
+            if kDebugDrawMatches:
                 img_matches = draw_feature_matches(f_ref.img, f_cur.img, 
                                                    f_ref.kps[idxs_ref], f_cur.kps[idxs_cur], 
                                                    f_ref.sizes[idxs_ref], f_cur.sizes[idxs_cur],
@@ -411,7 +411,7 @@ class Tracking(object):
         print("# new matched map points in local map: %d " % num_found_map_pts)                   
         print("# local map points ", self.map.local_map.num_points())         
         
-        if kDebugDrawMatches and True: 
+        if kDebugDrawMatches:
             img_matched_trails = f_cur.draw_feature_trails(f_cur.img.copy(), matched_points_frame_idxs, trail_max_length=3) 
             cv2.imshow('tracking local map - matched trails', img_matched_trails)
             cv2.waitKey(1)          
@@ -619,7 +619,7 @@ class Tracking(object):
         self.wait_for_local_mapping()  # N.B.: this must be outside the `with self.map.update_lock:` block
 
         with self.map.update_lock:
-            
+            absolute_scale = self.get_absolute_scale(frame_id)
             # update slam state 
             if self.pose_is_ok:
                 self.state=SlamState.OK          
@@ -669,7 +669,7 @@ class Tracking(object):
             self.update_tracking_history()    # must stay after having updated slam state (self.state)                                                                  
                     
             Printer.green("map: %d points, %d keyframes" % (self.map.num_points(), self.map.num_keyframes()))
-            #self.update_history()
+            self.update_history()
             
             self.timer_main_track.refresh()
             
@@ -697,28 +697,28 @@ class Tracking(object):
         #print('is_local_mapping_idle: ', is_local_mapping_idle,', local_mapping_queue_size: ', local_mapping_queue_size)             
 
 
-    # def update_history(self):
-    #     f_cur = self.map.get_frame(-1)
-    #     self.cur_R = f_cur.pose[:3,:3].T
-    #     self.cur_t = np.dot(-self.cur_R,f_cur.pose[:3,3])
-    #     if (self.init_history is True) and (self.trueX is not None):
-    #         self.t0_est = np.array([self.cur_t[0], self.cur_t[1], self.cur_t[2]])  # starting translation 
-    #         self.t0_gt  = np.array([self.trueX, self.trueY, self.trueZ])           # starting translation 
-    #     if (self.t0_est is not None) and (self.t0_gt is not None):             
-    #         p = [self.cur_t[0]-self.t0_est[0], self.cur_t[1]-self.t0_est[1], self.cur_t[2]-self.t0_est[2]]   # the estimated traj starts at 0
-    #         self.traj3d_est.append(p)
-    #         self.traj3d_gt.append([self.trueX-self.t0_gt[0], self.trueY-self.t0_gt[1], self.trueZ-self.t0_gt[2]])            
-    #         self.poses.append(poseRt(self.cur_R, p))    
+    def update_history(self):
+        f_cur = self.map.get_frame(-1)
+        self.cur_R = f_cur.pose[:3,:3].T
+        self.cur_t = np.dot(-self.cur_R,f_cur.pose[:3,3])
+        if (self.init_history is True) and (self.trueX is not None):
+            self.t0_est = np.array([self.cur_t[0], self.cur_t[1], self.cur_t[2]])  # starting translation
+            self.t0_gt  = np.array([self.trueX, self.trueY, self.trueZ])           # starting translation
+        if (self.t0_est is not None) and (self.t0_gt is not None):
+            p = [self.cur_t[0]-self.t0_est[0], self.cur_t[1]-self.t0_est[1], self.cur_t[2]-self.t0_est[2]]   # the estimated traj starts at 0
+            self.traj3d_est.append(p)
+            self.traj3d_gt.append([self.trueX-self.t0_gt[0], self.trueY-self.t0_gt[1], self.trueZ-self.t0_gt[2]])
+            self.poses.append(poseRt(self.cur_R, p))
 
 
     # get current translation scale from ground-truth if this is set 
-    # def get_absolute_scale(self, frame_id):  
-    #     if self.groundtruth is not None and kUseGroundTruthScale:
-    #         self.trueX, self.trueY, self.trueZ, scale = self.groundtruth.getPoseAndAbsoluteScale(frame_id)
-    #         return scale
-    #     else:
-    #         self.trueX = 0 
-    #         self.trueY = 0 
-    #         self.trueZ = 0
-    #         return 1
+    def get_absolute_scale(self, frame_id):
+        if self.groundtruth is not None and kUseGroundTruthScale:
+            self.trueX, self.trueY, self.trueZ, scale = self.groundtruth.getPoseAndAbsoluteScale(frame_id)
+            return scale
+        else:
+            self.trueX = 0
+            self.trueY = 0
+            self.trueZ = 0
+            return 1
 

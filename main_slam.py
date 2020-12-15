@@ -54,8 +54,8 @@ if __name__ == "__main__":
 
     dataset = dataset_factory(config.dataset_settings)
 
-    #groundtruth = groundtruth_factory(config.dataset_settings)
-    groundtruth = None # not actually used by Slam() class; could be used for evaluating performances 
+    groundtruth = groundtruth_factory(config.dataset_settings)
+    # groundtruth = None # not actually used by Slam() class; could be used for evaluating performances
 
     cam = PinholeCamera(config.cam_settings['Camera.width'], config.cam_settings['Camera.height'],
                         config.cam_settings['Camera.fx'], config.cam_settings['Camera.fy'],
@@ -81,7 +81,9 @@ if __name__ == "__main__":
     time.sleep(1) # to show initial messages 
 
     # viewer3D = Viewer3D()
-    plt3d = Mplot3d(title='3Ds')
+    is_draw_3d = True
+    if is_draw_3d:
+        plt3d = Mplot3d(title='3Ds')
     # display2d = Display2D(cam.width, cam.height)  # pygame interface
     display2d = None  # enable this if you want to use opencv window
 
@@ -143,7 +145,10 @@ if __name__ == "__main__":
                     if slam.tracking.descriptor_distance_sigma is not None: 
                         descriptor_sigma_signal = [img_id, slam.tracking.descriptor_distance_sigma]                    
                         matched_points_plt.draw(descriptor_sigma_signal,'descriptor distance $\sigma_{th}$',color='k')                                                                 
-                    matched_points_plt.refresh()    
+                    matched_points_plt.refresh()
+                if is_draw_3d:
+                    plt3d.drawTraj(slam.tracking.traj3d_gt, 'ground truth', color='r', marker='.')
+                    plt3d.drawTraj(slam.tracking.traj3d_est, 'estimated', color='g', marker='.')
                 
                 duration = time.time()-time_start 
                 if(frame_duration > duration):
