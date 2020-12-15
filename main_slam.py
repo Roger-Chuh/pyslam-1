@@ -80,10 +80,10 @@ if __name__ == "__main__":
     slam = Slam(cam, feature_tracker, groundtruth)
     time.sleep(1) # to show initial messages 
 
-    viewer3D = Viewer3D()
-    
-    display2d = Display2D(cam.width, cam.height)  # pygame interface 
-    #display2d = None  # enable this if you want to use opencv window
+    # viewer3D = Viewer3D()
+    plt3d = Mplot3d(title='3D trajectory')
+    # display2d = Display2D(cam.width, cam.height)  # pygame interface
+    display2d = None  # enable this if you want to use opencv window
 
     matched_points_plt = Mplot2d(xlabel='img id', ylabel='# matches',title='# matches')    
 
@@ -99,7 +99,14 @@ if __name__ == "__main__":
             img = dataset.getImageColor(img_id)
             if img is None:
                 print('image is empty')
-                getchar()
+                if display2d is not None:
+                    display2d.quit()
+                if plt3d is not None:
+                    plt3d.quit()
+                if matched_points_plt is not None:
+                    matched_points_plt.quit()
+                break
+                # getchar()
             timestamp = dataset.getTimestamp()          # get current timestamp 
             next_timestamp = dataset.getNextTimestamp() # get next timestamp 
             frame_duration = next_timestamp-timestamp 
@@ -173,14 +180,14 @@ if __name__ == "__main__":
         if key == 'q' or (key_cv == ord('q')):
             if display2d is not None:
                 display2d.quit()
-            if viewer3D is not None:
-                viewer3D.quit()
+            # if viewer3D is not None:
+            #     viewer3D.quit()
             if matched_points_plt is not None:
                 matched_points_plt.quit()
             break
         
-        if viewer3D is not None:
-            is_paused = not viewer3D.is_paused()         
+        # if viewer3D is not None:
+        #     is_paused = not viewer3D.is_paused()
                         
     slam.quit()
     
