@@ -13,7 +13,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mplot_thread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
+            <state relative-caret-position="-964">
               <caret line="105" column="16" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="16" />
               <folding>
                 <element signature="e#0#733#1" />
@@ -28,21 +28,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_vo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="93" column="46" lean-forward="true" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="46" />
+            <state relative-caret-position="176">
+              <caret line="131" column="24" lean-forward="true" selection-start-line="131" selection-start-column="24" selection-end-line="132" selection-end-column="86" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_slam.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="186" column="17" lean-forward="true" selection-start-line="186" selection-start-column="17" selection-end-line="186" selection-end-column="17" />
+            <state relative-caret-position="746">
+              <caret line="52" column="19" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="19" />
               <folding>
                 <element signature="e#735#753#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1710" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-768" />
           </provider>
         </entry>
       </file>
@@ -75,10 +89,12 @@
       <find>close</find>
       <find>draw</find>
       <find>drawer_thread</find>
-      <find>self.key</find>
       <find>key</find>
       <find>traj3d_est</find>
       <find>matched_points_plt</find>
+      <find>self.key</find>
+      <find>plt3d</find>
+      <find>Config</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -146,12 +162,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608020724191</updated>
-      <workItem from="1608020730099" duration="12279000" />
+      <workItem from="1608020730099" duration="14383000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12279000" />
+    <option name="totallyTimeSpent" value="14383000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
@@ -191,9 +207,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/viewer3D.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4790">
+          <caret line="61" column="8" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mplot_thread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="-964">
           <caret line="105" column="16" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="16" />
           <folding>
             <element signature="e#0#733#1" />
@@ -204,28 +227,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viewer3D.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4790">
-          <caret line="61" column="8" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main_vo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="93" column="46" lean-forward="true" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="46" />
+        <state relative-caret-position="176">
+          <caret line="131" column="24" lean-forward="true" selection-start-line="131" selection-start-column="24" selection-end-line="132" selection-end-column="86" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_slam.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="186" column="17" lean-forward="true" selection-start-line="186" selection-start-column="17" selection-end-line="186" selection-end-column="17" />
+        <state relative-caret-position="746">
+          <caret line="52" column="19" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="19" />
           <folding>
             <element signature="e#735#753#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1710" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-768" />
       </provider>
     </entry>
   </component>
