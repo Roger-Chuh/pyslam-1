@@ -75,8 +75,9 @@ class Mplot2d:
         while is_running.value == 1:
             self.drawer_refresh(queue, lock)                                    
             if kUseFigCanvasDrawIdle:               
-                time.sleep(kPlotSleep) 
-        print(mp.current_process().name,'closing fig ', self.fig)  
+                time.sleep(kPlotSleep)
+        plt.savefig(self.title + '.png')
+        print(mp.current_process().name,'closing fig ', self.fig)
         plt.close(self.fig)              
 
     def drawer_refresh(self, queue, lock):            
@@ -214,8 +215,9 @@ class Mplot3d:
         while is_running.value == 1:
             self.drawer_refresh(queue, lock)   
             if kUseFigCanvasDrawIdle:               
-                time.sleep(kPlotSleep)    
-        print(mp.current_process().name,'closing fig ', self.fig)     
+                time.sleep(kPlotSleep)
+        plt.savefig(self.title + '.png')
+        print(mp.current_process().name,'closing fig ', self.fig)
         plt.close(self.fig)                                 
 
     def drawer_refresh(self, queue, lock):            
