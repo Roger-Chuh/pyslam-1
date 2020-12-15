@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mplot_thread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-964">
-              <caret line="105" column="16" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="16" />
+            <state relative-caret-position="3596">
+              <caret line="219" column="48" selection-start-line="219" selection-start-column="41" selection-end-line="219" selection-end-column="48" />
               <folding>
                 <element signature="e#0#733#1" />
                 <element signature="e#735#746#0" expanded="true" />
@@ -25,29 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main_vo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="81" column="17" lean-forward="true" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/visual_odometry.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="237" column="21" selection-start-line="237" selection-start-column="17" selection-end-line="237" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main_slam.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="112" column="26" selection-start-line="112" selection-start-column="12" selection-end-line="112" selection-end-column="26" />
+            <state relative-caret-position="372">
+              <caret line="117" column="45" lean-forward="true" selection-start-line="117" selection-start-column="45" selection-end-line="117" selection-end-column="45" />
               <folding>
                 <element signature="e#735#753#0" expanded="true" />
               </folding>
@@ -58,15 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slam.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="132" column="34" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="34" />
-              <folding>
-                <element signature="e#735#753#0" expanded="true" />
-                <element signature="e#33645#33685#0" />
-                <element signature="e#34543#36329#0" />
-                <element signature="e#35748#35833#0" />
-                <element signature="e#35850#35909#0" />
-              </folding>
+            <state relative-caret-position="168">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
@@ -89,11 +64,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.</find>
-      <find>map</find>
-      <find>traj3d_est</find>
-      <find>groundtruth</find>
-      <find>trueX</find>
       <find>system</find>
       <find>Tracking</find>
       <find>track</find>
@@ -113,13 +83,21 @@
       <find>self.cur_t</find>
       <find>self.map</find>
       <find>processFirstFrame</find>
-      <find>init</find>
-      <find>is_draw_3d</find>
       <find>kVerbose</find>
       <find>kTimerVerbose</find>
       <find>need_new_keyframe</find>
       <find>next_timestamp</find>
+      <find>display2d</find>
+      <find>du</find>
+      <find>matched_points_plt</find>
+      <find>init</find>
+      <find>is_draw_3d</find>
+      <find>closing</find>
+      <find>print</find>
     </findStrings>
+    <replaceStrings>
+      <replace># print</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -188,12 +166,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608020724191</updated>
-      <workItem from="1608020730099" duration="20368000" />
+      <workItem from="1608020730099" duration="22936000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20368000" />
+    <option name="totallyTimeSpent" value="22936000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
@@ -240,19 +218,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mplot_thread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-964">
-          <caret line="105" column="16" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#733#1" />
-            <element signature="e#735#746#0" expanded="true" />
-            <element signature="e#5499#5901#0" />
-            <element signature="e#10560#11118#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ground_truth.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
@@ -272,7 +237,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/visual_odometry.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
+        <state relative-caret-position="568">
           <caret line="237" column="21" selection-start-line="237" selection-start-column="17" selection-end-line="237" selection-end-column="21" />
         </state>
       </provider>
@@ -284,24 +249,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mplot_thread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3596">
+          <caret line="219" column="48" selection-start-line="219" selection-start-column="41" selection-end-line="219" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#733#1" />
+            <element signature="e#735#746#0" expanded="true" />
+            <element signature="e#5499#5901#0" />
+            <element signature="e#10560#11118#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/slam.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="132" column="34" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="34" />
-          <folding>
-            <element signature="e#735#753#0" expanded="true" />
-            <element signature="e#33645#33685#0" />
-            <element signature="e#34543#36329#0" />
-            <element signature="e#35748#35833#0" />
-            <element signature="e#35850#35909#0" />
-          </folding>
+        <state relative-caret-position="168">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_slam.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="112" column="26" selection-start-line="112" selection-start-column="12" selection-end-line="112" selection-end-column="26" />
+        <state relative-caret-position="372">
+          <caret line="117" column="45" lean-forward="true" selection-start-line="117" selection-start-column="45" selection-end-line="117" selection-end-column="45" />
           <folding>
             <element signature="e#735#753#0" expanded="true" />
           </folding>

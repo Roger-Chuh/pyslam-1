@@ -83,7 +83,7 @@ if __name__ == "__main__":
     # viewer3D = Viewer3D()
     is_draw_3d = True
     if is_draw_3d:
-        plt3d = Mplot3d(title='3Ds')
+        plt3d = Mplot3d(title='3Dss')
     # display2d = Display2D(cam.width, cam.height)  # pygame interface
     display2d = None  # enable this if you want to use opencv window
 
@@ -111,8 +111,10 @@ if __name__ == "__main__":
             next_timestamp = dataset.getNextTimestamp() # get next timestamp
             if not next_timestamp:
                 if plt3d is not None:
+                    print('3D')
                     plt3d.quit()
                 if matched_points_plt is not None:
+                    print('matched')
                     matched_points_plt.quit()
                 break
             frame_duration = next_timestamp-timestamp 
