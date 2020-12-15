@@ -169,12 +169,15 @@ if __name__ == "__main__":
         cv2.imwrite('camera.png', vo.draw_img)
     if is_draw_3d:
         if not kUsePangolin:
+            plt3d.fig.savefig('3D.png')
             plt3d.quit()
         else: 
             viewer3D.quit()
     if is_draw_err:
+        err_plt.fig.savefig('error.png')
         err_plt.quit()
     if is_draw_matched_points is not None:
+        matched_points_plt.fig.savefig('matched.png')
         matched_points_plt.quit()
                 
     cv2.destroyAllWindows()
