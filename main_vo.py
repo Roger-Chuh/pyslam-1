@@ -149,7 +149,9 @@ if __name__ == "__main__":
 
 
             # draw camera image 
-            cv2.imshow('Camera', vo.draw_img)				
+            # cv2.imshow('Camera', vo.draw_img)
+        else:
+            break
 
         # press 'q' to exit!
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -162,6 +164,9 @@ if __name__ == "__main__":
     if is_draw_traj_img:
         print('saving map.png')
         cv2.imwrite('map.png', traj_img)
+    if dataset.isOk():
+        print('saving camera.png')
+        cv2.imwrite('camera.png', vo.draw_img)
     if is_draw_3d:
         if not kUsePangolin:
             plt3d.quit()
