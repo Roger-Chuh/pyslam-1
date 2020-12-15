@@ -81,11 +81,11 @@ if __name__ == "__main__":
     time.sleep(1) # to show initial messages 
 
     # viewer3D = Viewer3D()
-    plt3d = Mplot3d(title='3D trajectory')
+    plt3d = Mplot3d(title='3Ds')
     # display2d = Display2D(cam.width, cam.height)  # pygame interface
     display2d = None  # enable this if you want to use opencv window
 
-    matched_points_plt = Mplot2d(xlabel='img id', ylabel='# matches',title='# matches')    
+    matched_points_plt = Mplot2d(xlabel='img id', ylabel='# matches',title='matchess')
 
     do_step = False   
     is_paused = False 
