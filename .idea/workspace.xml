@@ -10,11 +10,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mplot_thread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="120" column="43" lean-forward="true" selection-start-line="120" selection-start-column="43" selection-end-line="120" selection-end-column="43" />
+            <state relative-caret-position="176">
+              <caret line="79" column="17" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="17" />
               <folding>
                 <element signature="e#0#733#1" />
                 <element signature="e#735#746#0" expanded="true" />
@@ -25,11 +25,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_vo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="127" column="29" selection-start-line="127" selection-start-column="19" selection-end-line="127" selection-end-column="29" />
+            <state relative-caret-position="-717">
+              <caret line="116" column="58" lean-forward="true" selection-start-line="116" selection-start-column="58" selection-end-line="116" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main_slam.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-62">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+              <folding>
+                <element signature="e#735#753#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -38,7 +50,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>kUseFigCanvasDrawIdle</find>
       <find>imshow</find>
       <find>kVerbose</find>
       <find>kSetDaemon</find>
@@ -51,6 +62,8 @@
       <find>plot</find>
       <find>ax</find>
       <find>is_draw_3d</find>
+      <find>traj3d_est</find>
+      <find>kUseFigCanvasDrawIdle</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -59,8 +72,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/main_vo.py" />
         <option value="$PROJECT_DIR$/mplot_thread.py" />
+        <option value="$PROJECT_DIR$/main_slam.py" />
+        <option value="$PROJECT_DIR$/main_vo.py" />
       </list>
     </option>
   </component>
@@ -117,12 +131,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608020724191</updated>
-      <workItem from="1608020730099" duration="5405000" />
+      <workItem from="1608020730099" duration="9272000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5405000" />
+    <option name="totallyTimeSpent" value="9272000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
@@ -162,23 +176,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mplot_thread.py">
+    <entry file="file://$PROJECT_DIR$/main_slam.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="120" column="43" lean-forward="true" selection-start-line="120" selection-start-column="43" selection-end-line="120" selection-end-column="43" />
+        <state relative-caret-position="-62">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
-            <element signature="e#0#733#1" />
-            <element signature="e#735#746#0" expanded="true" />
-            <element signature="e#5499#5901#0" />
-            <element signature="e#10560#11118#0" />
+            <element signature="e#735#753#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_vo.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-717">
+          <caret line="116" column="58" lean-forward="true" selection-start-line="116" selection-start-column="58" selection-end-line="116" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mplot_thread.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
-          <caret line="127" column="29" selection-start-line="127" selection-start-column="19" selection-end-line="127" selection-end-column="29" />
+          <caret line="79" column="17" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#733#1" />
+            <element signature="e#735#746#0" expanded="true" />
+            <element signature="e#5499#5901#0" />
+            <element signature="e#10560#11118#0" />
+          </folding>
         </state>
       </provider>
     </entry>

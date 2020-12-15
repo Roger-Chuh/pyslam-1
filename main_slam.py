@@ -109,16 +109,16 @@ if __name__ == "__main__":
                 slam.track(img, img_id, timestamp)  # main SLAM function 
                                 
                 # 3D display (map display)
-                if viewer3D is not None:
-                    viewer3D.draw_map(slam)
+                # if viewer3D is not None:
+                #     viewer3D.draw_map(slam)
 
                 img_draw = slam.map.draw_feature_trails(img)
                     
-                # 2D display (image display)
-                if display2d is not None:
-                    display2d.draw(img_draw)
-                else: 
-                    cv2.imshow('Camera', img_draw)
+                # # 2D display (image display)
+                # if display2d is not None:
+                #     display2d.draw(img_draw)
+                # else:
+                #     cv2.imshow('Camera', img_draw)
 
                 if matched_points_plt is not None: 
                     if slam.tracking.num_matched_kps is not None: 
