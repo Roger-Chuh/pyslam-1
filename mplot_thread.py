@@ -47,8 +47,8 @@ class Mplot2d:
     def __init__(self, xlabel='', ylabel='', title=''):
         self.xlabel = xlabel
         self.ylabel = ylabel
-        self.title = title 
-
+        self.title = title
+        self.fig = plt.figure()
         self.data = None 
         self.got_data = False 
 
@@ -193,8 +193,8 @@ class Mplot3d:
         self.axis_computed = False 
         self.xlim = [float("inf"),float("-inf")]
         self.ylim = [float("inf"),float("-inf")]
-        self.zlim = [float("inf"),float("-inf")]        
-
+        self.zlim = [float("inf"),float("-inf")]
+        self.fig = plt.figure()
         self.handle_map = {}     
         
         self.key = Value('i',0)

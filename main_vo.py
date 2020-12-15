@@ -28,6 +28,8 @@ from camera  import PinholeCamera
 from ground_truth import groundtruth_factory
 from dataset import dataset_factory
 
+import matplotlib.pyplot as plt
+
 #from mplot3d import Mplot3d
 #from mplot2d import Mplot2d
 from mplot_thread import Mplot2d, Mplot3d
@@ -169,15 +171,18 @@ if __name__ == "__main__":
         cv2.imwrite('camera.png', vo.draw_img)
     if is_draw_3d:
         if not kUsePangolin:
-            plt3d.fig.savefig('3D.png')
+            plt3d.ax(data=plt3d.data)
+            plt.savefig('3D.png')
             plt3d.quit()
         else: 
             viewer3D.quit()
     if is_draw_err:
-        err_plt.fig.savefig('error.png')
+        err_plt.ax(data=err_plt.data)
+        plt.savefig('err.png')
         err_plt.quit()
     if is_draw_matched_points is not None:
-        matched_points_plt.fig.savefig('matched.png')
+        matched_points_plt.ax(data=matched_points_plt.data)
+        plt.savefig('matched.png')
         matched_points_plt.quit()
                 
     cv2.destroyAllWindows()

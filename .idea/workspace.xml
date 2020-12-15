@@ -10,24 +10,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mplot_thread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="120" column="26" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="26" />
+            <state relative-caret-position="207">
+              <caret line="196" column="31" selection-start-line="196" selection-start-column="31" selection-end-line="196" selection-end-column="31" />
               <folding>
                 <element signature="e#0#733#1" />
                 <element signature="e#735#746#0" expanded="true" />
                 <element signature="e#5499#5901#0" />
+                <element signature="e#10560#11118#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_vo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
+            <state relative-caret-position="2322">
               <caret line="172" column="24" lean-forward="true" selection-start-line="172" selection-start-column="24" selection-end-line="172" selection-end-column="24" />
               <folding>
                 <element signature="e#735#753#0" expanded="true" />
@@ -58,8 +59,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mplot_thread.py" />
         <option value="$PROJECT_DIR$/main_vo.py" />
+        <option value="$PROJECT_DIR$/mplot_thread.py" />
       </list>
     </option>
   </component>
@@ -116,12 +117,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608020724191</updated>
-      <workItem from="1608020730099" duration="3310000" />
+      <workItem from="1608020730099" duration="4197000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3310000" />
+    <option name="totallyTimeSpent" value="4197000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
@@ -161,24 +162,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mplot_thread.py">
+    <entry file="file://$PROJECT_DIR$/main_vo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="120" column="26" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="26" />
+        <state relative-caret-position="2322">
+          <caret line="172" column="24" lean-forward="true" selection-start-line="172" selection-start-column="24" selection-end-line="172" selection-end-column="24" />
           <folding>
-            <element signature="e#0#733#1" />
-            <element signature="e#735#746#0" expanded="true" />
-            <element signature="e#5499#5901#0" />
+            <element signature="e#735#753#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_vo.py">
+    <entry file="file://$PROJECT_DIR$/mplot_thread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="172" column="24" lean-forward="true" selection-start-line="172" selection-start-column="24" selection-end-line="172" selection-end-column="24" />
+        <state relative-caret-position="207">
+          <caret line="196" column="31" selection-start-line="196" selection-start-column="31" selection-end-line="196" selection-end-column="31" />
           <folding>
-            <element signature="e#735#753#0" expanded="true" />
+            <element signature="e#0#733#1" />
+            <element signature="e#735#746#0" expanded="true" />
+            <element signature="e#5499#5901#0" />
+            <element signature="e#10560#11118#0" />
           </folding>
         </state>
       </provider>
