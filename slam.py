@@ -48,7 +48,7 @@ from motion_model import MotionModel, MotionModelDamping
 
 from feature_tracker import FeatureTrackerTypes 
 
-from utils import # printer, getchar, Logging
+from utils import Printer, getchar, Logging
 from utils_draw import draw_feature_matches
 from utils_geom import triangulate_points, poseRt, normalize_vector, inv_T, triangulate_normalized_points, estimate_pose_ess_mat
 
@@ -82,7 +82,7 @@ kNumMinObsForKeyFrameDefault = 3
 
 
 if not kVerbose:
-    def # print(*args, **kwargs):
+    def  print(*args, **kwargs):
         pass 
 
 
@@ -122,7 +122,7 @@ class Slam(object):
     def init_feature_tracker(self, tracker):
         Frame.set_tracker(tracker) # set the static field of the class 
         if kUseEssentialMatrixFitting:
-            # printer.orange('forcing feature matcher ratio_test to 0.8')
+            Printer.orange('forcing feature matcher ratio_test to 0.8')
             tracker.matcher.ratio_test = 0.8
         if tracker.tracker_type == FeatureTrackerTypes.LK:
             raise ValueError("You cannot use Lukas-Kanade tracker in this SLAM approach!")  
@@ -234,7 +234,7 @@ class Tracking(object):
         # if there are not enough inliers do not use the estimated pose 
         if self.num_inliers < kNumMinInliersEssentialMat:
             #f_cur.update_pose(f_ref.pose) # reset estimated pose to previous frame 
-            # printer.red('Essential mat: not enough inliers!')  
+            Printer.red('Essential mat: not enough inliers!')  
         else:
             # use the estimated pose as an initial guess for the subsequent pose optimization 
             # set only the estimated rotation (essential mat computation does not provide a scale for the translation, see above) 
@@ -289,7 +289,7 @@ class Tracking(object):
                                                                                  max_reproj_distance=2*search_radius,
                                                                                  max_descriptor_distance=0.5*self.descriptor_distance_sigma)
                 self.num_matched_kps = len(idxs_cur)    
-                # printer.orange("# matched map points in prev frame (wider search): %d " % self.num_matched_kps)    
+                Printer.orange("# matched map points in prev frame (wider search): %d " % self.num_matched_kps)    
                                                 
             if kDebugDrawMatches:
                 img_matches = draw_feature_matches(f_ref.img, f_cur.img, 
@@ -303,7 +303,7 @@ class Tracking(object):
                 f_cur.remove_frame_views(idxs_cur)
                 f_cur.reset_points()                   
                 is_search_frame_by_projection_failure = True                   
-                # printer.red('Not enough matches in search frame by projection: ', self.num_matched_kps)
+                Printer.red('Not enough matches in search frame by projection: ', self.num_matched_kps)
             else:   
                 # search frame by projection was successful 
                 if kUseDynamicDesDistanceTh: 
@@ -322,7 +322,7 @@ class Tracking(object):
                 ## print('     # matched points: %d' % (num_matched_points) )
                                       
                 if not self.pose_is_ok or self.num_matched_map_points < kNumMinInliersPoseOptimizationTrackFrame:
-                    # printer.red('failure in tracking previous frame, # matched map points: ', self.num_matched_map_points)                    
+                    Printer.red('failure in tracking previous frame, # matched map points: ', self.num_matched_map_points)                    
                     self.pose_is_ok = False                                                                                                   
         
         if not use_search_frame_by_projection or is_search_frame_by_projection_failure:
@@ -376,7 +376,7 @@ class Tracking(object):
         if not self.pose_is_ok or self.num_matched_map_points < kNumMinInliersPoseOptimizationTrackFrame:
             f_cur.remove_frame_views(idxs_cur)
             f_cur.reset_points()               
-            # printer.red('failure in tracking reference %d, # matched map points: %d' %(f_ref.id,self.num_matched_map_points))  
+            Printer.red('failure in tracking reference %d, # matched map points: %d' %(f_ref.id,self.num_matched_map_points))  
             self.pose_is_ok = False            
         
         
@@ -423,7 +423,7 @@ class Tracking(object):
                                               # only after keyframe generation the outliers are cleaned!
         # print('     # num_matched_map_points: %d' % (self.num_matched_map_points) )
         if not self.pose_is_ok or self.num_matched_map_points < kNumMinInliersPoseOptimizationTrackLocalMap:
-            # printer.red('failure in tracking local map, # matched map points: ', self.num_matched_map_points) 
+            Printer.red('failure in tracking local map, # matched map points: ', self.num_matched_map_points) 
             self.pose_is_ok = False                                        
         
         #if kUseDynamicDesDistanceTh: 
@@ -452,7 +452,7 @@ class Tracking(object):
             nMinObs = 2  # if just two keyframes then we can have just two observations 
         num_kf_ref_tracked_points = self.kf_ref.num_tracked_points(nMinObs)  # number of tracked points in k_ref
         num_f_cur_tracked_points = f_cur.num_matched_inlier_map_points()     # number of inliers in f_cur 
-        # printer.purple('F(%d) #points: %d, KF(%d) #points: %d ' %(f_cur.id, num_f_cur_tracked_points, self.kf_ref.id, num_kf_ref_tracked_points))
+        Printer.purple('F(%d) #points: %d, KF(%d) #points: %d ' %(f_cur.id, num_f_cur_tracked_points, self.kf_ref.id, num_kf_ref_tracked_points))
         
         if kLogKFinfoToFile:
             self.kf_info_logger.info('F(%d) #points: %d, KF(%d) #points: %d ' %(f_cur.id, num_f_cur_tracked_points, self.kf_ref.id, num_kf_ref_tracked_points))
@@ -494,14 +494,14 @@ class Tracking(object):
 
     # @ main track method @
     def track(self, img, frame_id, timestamp=None):
-        # printer.cyan('@tracking')
+        Printer.cyan('@tracking')
         time_start = time.time()
                 
         # check image size is coherent with camera params 
         # print("img.shape: ", img.shape)
         # print("camera ", self.camera.height," x ", self.camera.width)
         assert img.shape[0:2] == (self.camera.height, self.camera.width)   
-        if timestamp is not None: 
+        # if timestamp is not None:
             # print('timestamp: ', timestamp)  
         
         self.timer_main_track.start()
@@ -539,7 +539,7 @@ class Tracking(object):
                 kf_cur.init_observations()
                 # add points in map 
                 new_pts_count,_,_ = self.map.add_points(initializer_output.pts, None, kf_cur, kf_ref, initializer_output.idxs_cur, initializer_output.idxs_ref, img, do_check=False)
-                # printer.green("map: initialized %d new points" % (new_pts_count))                 
+                Printer.green("map: initialized %d new points" % (new_pts_count))                 
                 # update covisibility graph connections 
                 kf_ref.update_connections()
                 kf_cur.update_connections()     
@@ -625,7 +625,7 @@ class Tracking(object):
                 self.state=SlamState.OK          
             else:                
                 self.state=SlamState.LOST
-                # printer.red('tracking failure')
+                Printer.red('tracking failure')
                 
             # update motion model state     
             self.motion_model.is_ok = self.pose_is_ok                    
@@ -641,7 +641,7 @@ class Tracking(object):
                 need_new_kf = self.need_new_keyframe(f_cur)
                                     
                 if need_new_kf: 
-                    # printer.green('adding new KF with frame id % d: ' %(f_cur.id))
+                    Printer.green('adding new KF with frame id % d: ' %(f_cur.id))
                     if kLogKFinfoToFile:
                         self.kf_info_logger.info('adding new KF with frame id % d: ' %(f_cur.id))                
                     kf_new = KeyFrame(f_cur, img)                                     
@@ -653,7 +653,7 @@ class Tracking(object):
                     if not kLocalMappingOnSeparateThread:
                         self.local_mapping.do_local_mapping()                                      
                 else: 
-                    # printer.yellow('NOT KF')      
+                    Printer.yellow('NOT KF')      
                     
                 # From ORBSLAM2: 
                 # Clean outliers once keyframe generation has been managed:
@@ -668,7 +668,7 @@ class Tracking(object):
                                     
             self.update_tracking_history()    # must stay after having updated slam state (self.state)                                                                  
                     
-            # printer.green("map: %d points, %d keyframes" % (self.map.num_points(), self.map.num_keyframes()))
+            Printer.green("map: %d points, %d keyframes" % (self.map.num_points(), self.map.num_keyframes()))
             self.update_history()
             
             self.timer_main_track.refresh()
