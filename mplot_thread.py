@@ -118,7 +118,8 @@ class Mplot2d:
         self.fig.canvas.mpl_connect('key_release_event', self.on_key_release)               
         #self.ax = self.fig.gca(projection='3d')
         #self.ax = self.fig.gca()
-        self.ax = self.fig.add_subplot(111)   
+        self.ax = self.fig.add_subplot(111)
+        print(type(self.ax),self.title)
         if self.title is not '':
             self.ax.set_title(self.title) 
         self.ax.set_xlabel(self.xlabel)
