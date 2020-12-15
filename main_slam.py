@@ -101,8 +101,6 @@ if __name__ == "__main__":
             img = dataset.getImageColor(img_id)
             if img is None:
                 print('image is empty')
-                if display2d is not None:
-                    display2d.quit()
                 if plt3d is not None:
                     plt3d.quit()
                 if matched_points_plt is not None:
@@ -110,7 +108,13 @@ if __name__ == "__main__":
                 break
                 # getchar()
             timestamp = dataset.getTimestamp()          # get current timestamp 
-            next_timestamp = dataset.getNextTimestamp() # get next timestamp 
+            next_timestamp = dataset.getNextTimestamp() # get next timestamp
+            if not next_timestamp:
+                if plt3d is not None:
+                    plt3d.quit()
+                if matched_points_plt is not None:
+                    matched_points_plt.quit()
+                break
             frame_duration = next_timestamp-timestamp 
 
             if img is not None:

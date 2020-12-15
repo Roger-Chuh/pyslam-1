@@ -43,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main_slam.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="149" column="58" selection-start-line="149" selection-start-column="58" selection-end-line="149" selection-end-column="58" />
+            <state relative-caret-position="328">
+              <caret line="112" column="26" selection-start-line="112" selection-start-column="12" selection-end-line="112" selection-end-column="26" />
               <folding>
                 <element signature="e#735#753#0" expanded="true" />
               </folding>
@@ -55,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slam.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="626" column="41" lean-forward="true" selection-start-line="626" selection-start-column="41" selection-end-line="626" selection-end-column="41" />
+            <state relative-caret-position="19">
+              <caret line="132" column="34" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="34" />
               <folding>
                 <element signature="e#735#753#0" expanded="true" />
                 <element signature="e#33645#33685#0" />
@@ -89,9 +89,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.key</find>
-      <find>gt</find>
-      <find>traj3d_gt</find>
       <find>self.</find>
       <find>map</find>
       <find>traj3d_est</find>
@@ -109,7 +106,6 @@
       <find>update_local_map</find>
       <find>processFrame</find>
       <find>init_history</find>
-      <find>kVerbose</find>
       <find>matched points</find>
       <find>self.state</find>
       <find>update_tracking_history</find>
@@ -119,6 +115,10 @@
       <find>processFirstFrame</find>
       <find>init</find>
       <find>is_draw_3d</find>
+      <find>kVerbose</find>
+      <find>kTimerVerbose</find>
+      <find>need_new_keyframe</find>
+      <find>next_timestamp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -188,12 +188,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608020724191</updated>
-      <workItem from="1608020730099" duration="19077000" />
+      <workItem from="1608020730099" duration="20368000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19077000" />
+    <option name="totallyTimeSpent" value="20368000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
@@ -284,26 +284,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_slam.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="149" column="58" selection-start-line="149" selection-start-column="58" selection-end-line="149" selection-end-column="58" />
-          <folding>
-            <element signature="e#735#753#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/slam.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="626" column="41" lean-forward="true" selection-start-line="626" selection-start-column="41" selection-end-line="626" selection-end-column="41" />
+        <state relative-caret-position="19">
+          <caret line="132" column="34" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="34" />
           <folding>
             <element signature="e#735#753#0" expanded="true" />
             <element signature="e#33645#33685#0" />
             <element signature="e#34543#36329#0" />
             <element signature="e#35748#35833#0" />
             <element signature="e#35850#35909#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_slam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="112" column="26" selection-start-line="112" selection-start-column="12" selection-end-line="112" selection-end-column="26" />
+          <folding>
+            <element signature="e#735#753#0" expanded="true" />
           </folding>
         </state>
       </provider>
