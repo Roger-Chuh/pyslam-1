@@ -178,7 +178,7 @@ class TumGroundTruth(GroundTruth):
 
     def getQuat(self, frame_id):
         ss = self.getDataLine(frame_id)
-        return np.array(ss[4:])
+        return np.array(list(map(float,ss[4:])))
 
     @staticmethod
     def associate(first_list, second_list, offset=0, max_difference=0.02):
