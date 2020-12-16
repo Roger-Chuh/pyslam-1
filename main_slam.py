@@ -127,8 +127,10 @@ if __name__ == "__main__":
                 for i in range(n_his):
                     if st_his.slam_states[i] == SlamState.OK: #OK
                         cur_pose = CameraPose(st_his.relative_frame_poses[i])
-                        cur_tra = [str(round(st_his.timestamps[i],4))] + list(map(str,np.round(opos + cur_pose.Ow,decimals=4))) + \
-                                  list(map(str, np.round((R.from_matrix(cur_pose.Rcw)* oquat).as_quat(),decimals=4)))
+                        # cur_tra = [str(round(st_his.timestamps[i],4))] + list(map(str,np.round(opos + cur_pose.Ow,decimals=4))) + \
+                        #           list(map(str, np.round((R.from_matrix(cur_pose.Rcw)* oquat).as_quat(),decimals=4)))
+                        cur_tra = [str(round(st_his.timestamps[i], 4))] + list(map(str, np.round(cur_pose.Ow, decimals=4))) + \
+                                  list(map(str, np.round(R.from_matrix(cur_pose.Rcw).as_quat(), decimals=4)))
                         trajectory.append(cur_tra)
                 print('valid frame ratio:{}'.format(len(trajectory)/n_his))
                 list_to_txt(trajectory, 'est_tra')
