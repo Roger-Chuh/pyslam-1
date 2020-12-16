@@ -20,7 +20,8 @@
 import numpy as np
 import cv2
 import math
-import time 
+import time
+from scipy.spatial.transform import Rotation as R
 
 from config import Config
 
@@ -28,6 +29,7 @@ from slam import Slam, SlamState
 from camera  import PinholeCamera
 from ground_truth import groundtruth_factory
 from dataset import dataset_factory
+from camera_pose import CameraPose
 
 #from mplot3d import Mplot3d
 #from mplot2d import Mplot2d
@@ -44,7 +46,15 @@ from feature_matcher import feature_matcher_factory, FeatureMatcherTypes
 
 from feature_tracker_configs import FeatureTrackerConfigs
 
-from parameters import Parameters  
+from parameters import Parameters
+
+def list_to_txt(list_name, file_name):
+    txt = open('{}.txt'.format(file_name), 'w')
+    for s in list_name:
+        s = s + '\n'
+        txt.write(s)
+    txt.close()
+    print("save {}.txt".format(file_name))
 
 
 
@@ -92,7 +102,7 @@ if __name__ == "__main__":
     do_step = False   
     is_paused = False 
     
-    img_id = 0  #180, 340, 400   # you can start from a desired frame id if needed 
+    img_id = 900  #180, 340, 400   # you can start from a desired frame id if needed
     while dataset.isOk():
             
         if not is_paused: 
@@ -110,11 +120,16 @@ if __name__ == "__main__":
             timestamp = dataset.getTimestamp()          # get current timestamp 
             next_timestamp = dataset.getNextTimestamp() # get next timestamp
             if not next_timestamp:
+                trajectory = []
+                for i in range(len(slam.tracking.tracking_history.relative_frame_poses)):
+                    cur_pose = CameraPose(slam.tracking.tracking_history.relative_frame_poses[i])
+                    cur_tra = [slam.tracking.tracking_history.timestamps] + list(cur_pose.Ow) + list(
+                        R.from_matrix(cur_pose.Rcw))
+                    trajectory.append(cur_tra)
+                list_to_txt(trajectory, 'est_tra')
                 if plt3d is not None:
-                    print('3D')
                     plt3d.quit()
                 if matched_points_plt is not None:
-                    print('matched')
                     matched_points_plt.quit()
                 break
             frame_duration = next_timestamp-timestamp 
