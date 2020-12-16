@@ -123,7 +123,7 @@ if __name__ == "__main__":
                 trajectory = []
                 for i in range(len(slam.tracking.tracking_history.relative_frame_poses)):
                     cur_pose = CameraPose(slam.tracking.tracking_history.relative_frame_poses[i])
-                    cur_tra = [slam.tracking.tracking_history.timestamps[i]] + list(map(str,np.round(cur_pose.Ow,decimals=4))) + \
+                    cur_tra = [str(round(slam.tracking.tracking_history.timestamps[i],4))] + list(map(str,np.round(cur_pose.Ow,decimals=4))) + \
                               list(map(str,np.round(R.from_matrix(cur_pose.Rcw).as_quat(),decimals=4)))
                     trajectory.append(cur_tra)
                 list_to_txt(trajectory, 'est_tra')
