@@ -712,13 +712,13 @@ class Tracking(object):
 
 
     # get current translation scale from ground-truth if this is set 
-    # def get_absolute_scale(self, frame_id):
-    #     if self.groundtruth is not None and kUseGroundTruthScale:
-    #         self.trueX, self.trueY, self.trueZ, scale = self.groundtruth.getPoseAndAbsoluteScale(frame_id)
-    #         return scale
-    #     else:
-    #         self.trueX = 0
-    #         self.trueY = 0
-    #         self.trueZ = 0
-    #         return 1
+    def get_absolute_scale(self, frame_id):
+        if self.groundtruth is not None and kUseGroundTruthScale:
+            self.trueX, self.trueY, self.trueZ, scale = self.groundtruth.getPoseAndAbsoluteScale(frame_id)
+            return scale
+        else:
+            self.trueX = 0
+            self.trueY = 0
+            self.trueZ = 0
+            return 1
 

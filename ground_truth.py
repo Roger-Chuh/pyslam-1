@@ -174,7 +174,11 @@ class TumGroundTruth(GroundTruth):
         y = self.scale*float(ss[2])
         z = self.scale*float(ss[3])
         abs_scale = np.sqrt((x - x_prev)*(x - x_prev) + (y - y_prev)*(y - y_prev) + (z - z_prev)*(z - z_prev))
-        return x,y,z,abs_scale 
+        return x,y,z,abs_scale
+
+    def getQuat(self, frame_id):
+        ss = self.getDataLine(frame_id)
+        return np.array(ss[4:])
 
     @staticmethod
     def associate(first_list, second_list, offset=0, max_difference=0.02):
