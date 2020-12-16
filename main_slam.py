@@ -121,13 +121,11 @@ if __name__ == "__main__":
             next_timestamp = dataset.getNextTimestamp() # get next timestamp
             if not next_timestamp:
                 trajectory = []
-                x,y,z, sc = slam.groundtruth.getPoseAndAbsoluteScale(0)
-                opos = np.array([x,y,z])
-                oquat = slam.groundtruth.getQuat(0)
+                opos, oquat = slam.groundtruth.getPoseAndQuat(0)
                 for i in range(len(slam.tracking.tracking_history.relative_frame_poses)):
                     cur_pose = CameraPose(slam.tracking.tracking_history.relative_frame_poses[i])
                     cur_tra = [str(round(slam.tracking.tracking_history.timestamps[i],4))] + list(map(str,np.round(opos + cur_pose.Ow,decimals=4))) + \
-                              list(map(str,oquat + np.round(R.from_matrix(cur_pose.Rcw).as_quat(),decimals=4)))
+                              list(map(str, np.round((R.from_matrix(cur_pose.Rcw)* oquat).as_quat(),decimals=4)))
                     trajectory.append(cur_tra)
                 list_to_txt(trajectory, 'est_tra')
                 if plt3d is not None:

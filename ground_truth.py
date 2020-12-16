@@ -18,7 +18,8 @@
 """
 
 import sys
-import numpy as np 
+import numpy as np
+from scipy.spatial.transform import Rotation as R
 from enum import Enum
 
 
@@ -176,9 +177,9 @@ class TumGroundTruth(GroundTruth):
         abs_scale = np.sqrt((x - x_prev)*(x - x_prev) + (y - y_prev)*(y - y_prev) + (z - z_prev)*(z - z_prev))
         return x,y,z,abs_scale
 
-    def getQuat(self, frame_id):
+    def getPoseAndQuat(self, frame_id):
         ss = self.getDataLine(frame_id)
-        return np.array(list(map(float,ss[4:])))
+        return np.array(ss[1:4]), R.from_quat(np.array(list(map(float,ss[4:]))))
 
     @staticmethod
     def associate(first_list, second_list, offset=0, max_difference=0.02):
