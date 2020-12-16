@@ -74,8 +74,8 @@ if __name__ == "__main__":
     
     num_features=2000 
 
-    tracker_type = FeatureTrackerTypes.DES_BF      # descriptor-based, brute force matching with knn 
-    #tracker_type = FeatureTrackerTypes.DES_FLANN  # descriptor-based, FLANN-based matching 
+    # tracker_type = FeatureTrackerTypes.DES_BF      # descriptor-based, brute force matching with knn
+    tracker_type = FeatureTrackerTypes.DES_FLANN  # descriptor-based, FLANN-based matching
 
     # select your tracker configuration (see the file feature_tracker_configs.py) 
     # FeatureTrackerConfigs: SHI_TOMASI_ORB, FAST_ORB, ORB, ORB2, ORB2_FREAK, BRISK, AKAZE, FAST_FREAK, SIFT, ROOT_SIFT, SURF, SUPERPOINT, FAST_TFEAT
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     do_step = False   
     is_paused = False 
     
-    img_id = 1000  #180, 340, 400   # you can start from a desired frame id if needed
+    img_id = 0  #180, 340, 400   # you can start from a desired frame id if needed
     while dataset.isOk():
             
         if not is_paused: 
@@ -125,7 +125,7 @@ if __name__ == "__main__":
                 st_his = slam.tracking.tracking_history
                 n_his = len(st_his.relative_frame_poses)
                 for i in range(n_his):
-                    if st_his.slam_states == 2: #OK
+                    if st_his.slam_states[i] == SlamState.OK: #OK
                         cur_pose = CameraPose(st_his.relative_frame_poses[i])
                         cur_tra = [str(round(st_his.timestamps[i],4))] + list(map(str,np.round(opos + cur_pose.Ow,decimals=4))) + \
                                   list(map(str, np.round((R.from_matrix(cur_pose.Rcw)* oquat).as_quat(),decimals=4)))
