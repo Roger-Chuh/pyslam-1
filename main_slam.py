@@ -50,8 +50,8 @@ from parameters import Parameters
 
 def list_to_txt(list_name, file_name):
     txt = open('{}.txt'.format(file_name), 'w')
-    for s in list_name:
-        s = ' '.join(s) + '\n'
+    for l in list_name:
+        s = ' '.join(l) + '\n'
         txt.write(s)
     txt.close()
     print("save {}.txt".format(file_name))
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     do_step = False   
     is_paused = False 
     
-    img_id = 900  #180, 340, 400   # you can start from a desired frame id if needed
+    img_id = 1000  #180, 340, 400   # you can start from a desired frame id if needed
     while dataset.isOk():
             
         if not is_paused: 
@@ -123,8 +123,8 @@ if __name__ == "__main__":
                 trajectory = []
                 for i in range(len(slam.tracking.tracking_history.relative_frame_poses)):
                     cur_pose = CameraPose(slam.tracking.tracking_history.relative_frame_poses[i])
-                    cur_tra = [slam.tracking.tracking_history.timestamps] + list(cur_pose.Ow) + list(
-                        R.from_matrix(cur_pose.Rcw))
+                    cur_tra = [slam.tracking.tracking_history.timestamps[i]] + list(map(str,np.round(cur_pose.Ow,decimals=4))) + \
+                              list(map(str,np.round(R.from_matrix(cur_pose.Rcw).as_quat(),decimals=4)))
                     trajectory.append(cur_tra)
                 list_to_txt(trajectory, 'est_tra')
                 if plt3d is not None:
@@ -167,9 +167,9 @@ if __name__ == "__main__":
                         descriptor_sigma_signal = [img_id, slam.tracking.descriptor_distance_sigma]                    
                         matched_points_plt.draw(descriptor_sigma_signal,'descriptor distance $\sigma_{th}$',color='k')                                                                 
                     matched_points_plt.refresh()
-                if is_draw_3d:
-                    plt3d.drawTraj(slam.tracking.traj3d_gt, 'ground truth', color='r', marker='.')
-                    plt3d.drawTraj(slam.tracking.traj3d_est, 'estimated', color='g', marker='.')
+                # if is_draw_3d:
+                #     plt3d.drawTraj(slam.tracking.traj3d_gt, 'ground truth', color='r', marker='.')
+                #     plt3d.drawTraj(slam.tracking.traj3d_est, 'estimated', color='g', marker='.')
                 
                 duration = time.time()-time_start 
                 if(frame_duration > duration):
