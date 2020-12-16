@@ -42,7 +42,7 @@ trajectory and the estimated trajectory.
 import sys
 import numpy
 import argparse
-from . import associate
+import associate
 
 
 def align(model, data):

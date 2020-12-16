@@ -91,9 +91,9 @@ if __name__ == "__main__":
     time.sleep(1) # to show initial messages 
 
     # viewer3D = Viewer3D()
-    is_draw_3d = True
-    if is_draw_3d:
-        plt3d = Mplot3d(title='3Dss')
+    # is_draw_3d = True
+    # if is_draw_3d:
+    #     plt3d = Mplot3d(title='3Dss')
     # display2d = Display2D(cam.width, cam.height)  # pygame interface
     display2d = None  # enable this if you want to use opencv window
 
@@ -111,8 +111,8 @@ if __name__ == "__main__":
             img = dataset.getImageColor(img_id)
             if img is None:
                 print('image is empty')
-                if plt3d is not None:
-                    plt3d.quit()
+                # if plt3d is not None:
+                #     plt3d.quit()
                 if matched_points_plt is not None:
                     matched_points_plt.quit()
                 break
@@ -122,14 +122,18 @@ if __name__ == "__main__":
             if not next_timestamp:
                 trajectory = []
                 opos, oquat = slam.groundtruth.getPoseAndQuat(0)
-                for i in range(len(slam.tracking.tracking_history.relative_frame_poses)):
-                    cur_pose = CameraPose(slam.tracking.tracking_history.relative_frame_poses[i])
-                    cur_tra = [str(round(slam.tracking.tracking_history.timestamps[i],4))] + list(map(str,np.round(opos + cur_pose.Ow,decimals=4))) + \
-                              list(map(str, np.round((R.from_matrix(cur_pose.Rcw)* oquat).as_quat(),decimals=4)))
-                    trajectory.append(cur_tra)
+                st_his = slam.tracking.tracking_history
+                n_his = len(st_his.relative_frame_poses)
+                for i in range(n_his):
+                    if st_his.slam_states == 2: #OK
+                        cur_pose = CameraPose(st_his.relative_frame_poses[i])
+                        cur_tra = [str(round(st_his.timestamps[i],4))] + list(map(str,np.round(opos + cur_pose.Ow,decimals=4))) + \
+                                  list(map(str, np.round((R.from_matrix(cur_pose.Rcw)* oquat).as_quat(),decimals=4)))
+                        trajectory.append(cur_tra)
+                print('valid frame ratio:{}'.format(len(trajectory)/n_his))
                 list_to_txt(trajectory, 'est_tra')
-                if plt3d is not None:
-                    plt3d.quit()
+                # if plt3d is not None:
+                #     plt3d.quit()
                 if matched_points_plt is not None:
                     matched_points_plt.quit()
                 break
