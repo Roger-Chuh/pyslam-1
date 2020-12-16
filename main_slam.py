@@ -51,7 +51,7 @@ from parameters import Parameters
 def list_to_txt(list_name, file_name):
     txt = open('{}.txt'.format(file_name), 'w')
     for s in list_name:
-        s = s + '\n'
+        s = ' '.join(s) + '\n'
         txt.write(s)
     txt.close()
     print("save {}.txt".format(file_name))
