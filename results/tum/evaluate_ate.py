@@ -42,7 +42,7 @@ trajectory and the estimated trajectory.
 import sys
 import numpy
 import argparse
-import associate
+from results.tum import associate
 
 
 def align(model, data):
@@ -148,11 +148,11 @@ if __name__ == "__main__":
 
     second_xyz_aligned = rot * second_xyz + trans
 
-    first_stamps = first_list.keys()
+    first_stamps = list(first_list.keys())
     first_stamps.sort()
     first_xyz_full = numpy.matrix([[float(value) for value in first_list[b][0:3]] for b in first_stamps]).transpose()
 
-    second_stamps = second_list.keys()
+    second_stamps = list(second_list.keys())
     second_stamps.sort()
     second_xyz_full = numpy.matrix(
         [[float(value) * float(args.scale) for value in second_list[b][0:3]] for b in second_stamps]).transpose()
@@ -194,8 +194,6 @@ if __name__ == "__main__":
 
         matplotlib.use('Agg')
         import matplotlib.pyplot as plt
-        import matplotlib.pylab as pylab
-        from matplotlib.patches import Ellipse
 
         fig = plt.figure()
         ax = fig.add_subplot(111)
