@@ -106,14 +106,14 @@ if __name__ == "__main__":
     is_draw_matched_points = True 
     matched_points_plt = Mplot2d(xlabel='img id', ylabel='# matches',title='# matches')
 
-    img_id = 0
+    img_id = 600
     trajectory = []
     while dataset.isOk():
 
         img = dataset.getImage(img_id)
         timestamp = dataset.getTimestamp()
         next_timestamp = dataset.getNextTimestamp()  # get next timestamp
-        if not next_timestamp:
+        if img_id >= len(groundtruth.association_matches):
             break
         if img is not None:
 
