@@ -106,7 +106,7 @@ if __name__ == "__main__":
     is_draw_matched_points = True 
     matched_points_plt = Mplot2d(xlabel='img id', ylabel='# matches',title='# matches')
 
-    img_id = 600
+    img_id = 0
     trajectory = []
     while dataset.isOk():
 
@@ -119,7 +119,7 @@ if __name__ == "__main__":
 
             vo.track(img, img_id)  # main VO function
 
-            if(img_id > 602):	       # start drawing from the third image (when everything is initialized and flows in a normal way)
+            if(img_id > 2):	       # start drawing from the third image (when everything is initialized and flows in a normal way)
 
                 x, y, z = vo.traj3d_est[-1]
                 x_true, y_true, z_true = vo.traj3d_gt[-1]
@@ -143,8 +143,7 @@ if __name__ == "__main__":
                         plt3d.drawTraj(vo.traj3d_gt,'ground truth',color='r',marker='.')
                         plt3d.drawTraj(vo.traj3d_est,'estimated',color='g',marker='.')
                         plt3d.refresh()
-                ct = [str(timestamp)]
-                ct.extend(list(map(str,vo.traj3d_est[-1])))
+                ct = list(map(str,[timestamp,x,y,z]))
                 trajectory.append(ct)
                 if is_draw_err:         # draw error signals
                     errx = [img_id, math.fabs(x_true-x)]
