@@ -41,6 +41,13 @@ from feature_matcher import feature_matcher_factory, FeatureMatcherTypes
 
 from feature_tracker_configs import FeatureTrackerConfigs
 
+def list_to_txt(list_name, file_name):
+    txt = open('{}.txt'.format(file_name), 'w')
+    for l in list_name:
+        s = ' '.join(l) + '\n'
+        txt.write(s)
+    txt.close()
+    print("save {}.txt".format(file_name))
 
 
 """
@@ -100,10 +107,11 @@ if __name__ == "__main__":
     matched_points_plt = Mplot2d(xlabel='img id', ylabel='# matches',title='# matches')
 
     img_id = 0
+    trajectory = []
     while dataset.isOk():
 
         img = dataset.getImage(img_id)
-
+        timestamp = dataset.getTimestamp()
         if img is not None:
 
             vo.track(img, img_id)  # main VO function
@@ -132,7 +140,9 @@ if __name__ == "__main__":
                         plt3d.drawTraj(vo.traj3d_gt,'ground truth',color='r',marker='.')
                         plt3d.drawTraj(vo.traj3d_est,'estimated',color='g',marker='.')
                         plt3d.refresh()
-
+                ct = [timestamp]
+                ct.extend(vo.traj3d_est[-1])
+                trajectory.append(ct)
                 if is_draw_err:         # draw error signals
                     errx = [img_id, math.fabs(x_true-x)]
                     erry = [img_id, math.fabs(y_true-y)]
@@ -164,6 +174,7 @@ if __name__ == "__main__":
     #cv2.waitKey(0)
 
     if is_draw_traj_img:
+        list_to_txt(trajectory, 'est_tra')
         print('saving map.png')
         cv2.imwrite('map.png', traj_img)
     if dataset.isOk():
