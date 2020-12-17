@@ -112,6 +112,9 @@ if __name__ == "__main__":
 
         img = dataset.getImage(img_id)
         timestamp = dataset.getTimestamp()
+        next_timestamp = dataset.getNextTimestamp()  # get next timestamp
+        if not next_timestamp:
+            break
         if img is not None:
 
             vo.track(img, img_id)  # main VO function
@@ -174,7 +177,7 @@ if __name__ == "__main__":
     #cv2.waitKey(0)
 
     if is_draw_traj_img:
-        list_to_txt(trajectory, 'est_tra')
+        list_to_txt(trajectory, 'estvo')
         print('saving map.png')
         cv2.imwrite('map.png', traj_img)
     if dataset.isOk():
